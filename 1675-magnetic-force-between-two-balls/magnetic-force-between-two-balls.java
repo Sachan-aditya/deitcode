@@ -2,8 +2,8 @@ class Solution {
     public int maxDistance(int[] position, int m) {
      Arrays.sort(position);
 
-        int left = 1; // Minimum possible distance
-        int right = position[position.length - 1] - position[0]; // Maximum possible distance
+        int left = 1; 
+        int right = position[position.length - 1] - position[0]; 
         int best = 0;
 
         while (left <= right) {
