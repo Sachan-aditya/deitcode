@@ -1,19 +1,20 @@
 class Solution {
-    public int numberOfSubarrays(int[] nums, int k) {
-        int count = 0, oddCount = 0, res = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1);
-        
+    public static int numberOfSubarrays(int[] nums, int k) {
+        int count = 0;
+        int oddCount = 0;
+        int[] prefixCounts = new int[nums.length + 1];
+        prefixCounts[0] = 1; // Initialize the prefix count for zero odd numbers.
+
         for (int num : nums) {
-            if ((num & 1) == 1) {
+            if (num % 2 != 0) {
                 oddCount++;
             }
-            if (map.containsKey(oddCount - k)) {
-                res += map.get(oddCount - k);
+            if (oddCount >= k) {
+                count += prefixCounts[oddCount - k];
             }
-            map.put(oddCount, map.getOrDefault(oddCount, 0) + 1);
+            prefixCounts[oddCount]++;
         }
-        
-        return res;
+
+        return count;
     }
 }
