@@ -8,8 +8,7 @@ class Solution {
         }
         int sum = 0;
         for (int i = 0; i < k; i++) {
-            sum += max;
-            max++;
+            sum += max + i;
         }
         return sum;
     }
