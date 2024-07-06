@@ -1,9 +1,9 @@
 class Solution {
     public int passThePillow(int n, int time) {
-        int position = 1; // Start from position 1
-        boolean forward = true; // Start by passing forward
+        int position = 1; 
+        boolean forward = true; 
         
-        while (time > 0) {
+        while (time--> 0) {
             if (forward) {
                 position++;
                 if (position == n) {
@@ -15,7 +15,7 @@ class Solution {
                     forward = true;
                 }
             }
-            time--;
+        
         }
         
         return position;
