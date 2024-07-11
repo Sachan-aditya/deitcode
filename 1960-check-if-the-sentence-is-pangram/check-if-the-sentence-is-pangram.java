@@ -1,11 +1,11 @@
 class Solution {
     public boolean checkIfPangram(String s) {
-       String a="abcdefghijklmnopqrstuvwxyz";
-       for(char c:a.toCharArray())
-       {
-        if(!(s.contains(c+"")))
-        return false;
-       }
-       return true;
+        Set<Character>set=new HashSet<>();
+        for(int i=0;i<s.length();i++)
+        {
+            set.add(s.charAt(i));
+
+        }
+        return set.size()==26;
     }
 }
