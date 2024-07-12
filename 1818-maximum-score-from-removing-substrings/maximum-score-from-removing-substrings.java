@@ -25,7 +25,7 @@ class Solution {
                     res += x;
                 } else {
                     b++;
-                }
+                };
             }
         }
         
