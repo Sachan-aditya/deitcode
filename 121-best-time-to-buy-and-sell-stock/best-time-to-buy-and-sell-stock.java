@@ -6,11 +6,13 @@ class Solution {
 
         int min = Integer.MAX_VALUE;
         int maxProfit = 0;
+
+        // Iterate through prices to find the minimum price and calculate the maximum profit
         for (int i = 0; i < prices.length; i++) {
             if (prices[i] < min) {
-                min = prices[i]; 
+                min = prices[i]; // Update the minimum price
             } else {
-                maxProfit = Math.max(maxProfit, prices[i] - min); 
+                maxProfit = Math.max(maxProfit, prices[i] - min); // Calculate the profit and update maxProfit
             }
         }
 
