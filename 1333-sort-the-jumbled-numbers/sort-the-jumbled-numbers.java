@@ -1,39 +1,32 @@
-import java.util.*;
+public class Solution {
 
-class Solution {
     public int[] sortJumbled(int[] mapping, int[] nums) {
-        int n = nums.length;
-        int[][] mappedWithIndex = new int[n][2];
-        
-        Map<Integer, Integer> map = new HashMap<>();
-        
-        for (int i = 0; i < 10; ++i) {
-            map.put(i, mapping[i]);
-        }
-        
-        for (int i = 0; i < n; ++i) {
-            int originalNum = nums[i];
-            int mappedNum = originalNum == 0 ? map.get(0) : 0;
-            int placeValue = 1;
-            
-            while (originalNum > 0) {
-                int digit = originalNum % 10;
-                mappedNum += placeValue * map.get(digit);
-                placeValue *= 10;
-                originalNum /= 10;
+        List<int[]> storePairs = new ArrayList<int[]>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int mappedValue = 0;
+            int temp = nums[i];
+            int place = 1;
+
+            if (temp == 0) {
+                storePairs.add(new int[] { mapping[0], i });
+                continue;
             }
-            
-            mappedWithIndex[i] = new int[] {mappedNum, i};
+            while (temp != 0) {
+                mappedValue = place * mapping[temp % 10] + mappedValue;
+                place *= 10;
+                temp /= 10;
+            }
+            storePairs.add(new int[] { mappedValue, i });
         }
-        
-        Arrays.sort(mappedWithIndex, (a, b) -> 
-            a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
-        
-        int[] sortedArray = new int[n];
-        for (int i = 0; i < n; ++i) {
-            sortedArray[i] = nums[mappedWithIndex[i][1]];
+
+        Collections.sort(storePairs, (a, b) -> a[0] - b[0]);
+
+        int[] answer = new int[nums.length];
+        for (int i = 0; i < storePairs.size(); i++) {
+            answer[i] = nums[storePairs.get(i)[1]];
         }
-        
-        return sortedArray;
+
+        return answer;
     }
 }
