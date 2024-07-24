@@ -5,7 +5,7 @@ public class Solution {
 
         for (int i = 0; i < nums.length; i++) {
             int mappedValue = 0;
-            int temp = nums[i];
+            int temp = nums[i];//991
             int place = 1;
 
             if (temp == 0) {
