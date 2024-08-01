@@ -3,8 +3,8 @@ class Solution {
        int c=0;
         for(String i:d)
         {
-        
-        if(Integer.parseInt(i.substring(11,13))>60)
+        String p=i.substring(11,13);
+        if(Integer.parseInt(p)>60)
         c++;
     }
     return c;
