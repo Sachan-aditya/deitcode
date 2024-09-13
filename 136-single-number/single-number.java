@@ -1,9 +1,10 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        int res=0;
-        for (int i : nums) {
-          res^=i;
+        int x=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            x^=nums[i];
         }
-        return res; // return the single element in the set
+        return x;
     }
 }
