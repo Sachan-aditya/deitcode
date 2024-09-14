@@ -1,55 +1,50 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int first=binarysearchf(nums, target);
-        int last=binarysearchl(nums,target);
-        int res[]=new int[2];
-        res[0]=first;
-        res[1]=last;
-        return res;
-
+        int a[]=new int[2];
+        a[0]=left(nums,target);
+        a[1]=right(nums,target);
+        return a;
     }
-    public int binarysearchf(int []nums,int target)
+    public int left(int []arr,int target)
     {
-        int ans=-1;
-        int s=0;
-        int e=nums.length-1;
-        while(s<=e)
-    {
-        int mid=s+(e-s)/2;
-    if(nums[mid]==target)
-    {
-        ans=mid;
-        e=mid-1;
+        int l=0;int index=-1;
+        int r=arr.length-1;
+        while(l<=r)
+        {
+            int mid=l+(r-l)/2;
+            if(arr[mid]==target)
+            {
+                index=mid;
+                r=mid-1;
+            }
+            else if(arr[mid]<target)
+            {
+                l=mid+1;
+            }
+            else
+            r=mid-1;
+        }
+        return index;
     }
-    else if(nums[mid]<target)
+    public  int right(int []arr,int target)
     {
-        s=mid+1;
-    }
-    else
-    e=mid-1;
-    }
-    return ans;
-    }
-     public int binarysearchl(int []nums,int target)
-    {
-        int ans=-1;
-        int s=0;
-        int e=nums.length-1;
-        while(s<=e)
-    {
-        int mid=s+(e-s)/2;
-    if(nums[mid]==target)
-    {
-        ans=mid;
-        s=mid+1;
-    }
-    else if(nums[mid]<target)
-    {
-        s=mid+1;
-    }
-    else
-    e=mid-1;
-    }
-    return ans;
+        int l=0;int index=-1;
+        int r=arr.length-1;
+        while(l<=r)
+        {
+            int mid=l+(r-l)/2;
+            if(arr[mid]==target)
+            {
+                index=mid;
+                l=mid+1;//3
+            }
+            else if(arr[mid]<target)
+            {
+                l=mid+1;
+            }
+            else
+            r=mid-1;
+        }
+        return index;
     }
 }
