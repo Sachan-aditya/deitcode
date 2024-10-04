@@ -13,7 +13,8 @@ class Solution {
             {
                 if(stack.isEmpty())
                 return false;
-                char top=stack.peek();
+                char top=stack.peek
+                ();
                 if(ch==')' && top=='(' ||ch==']' && top=='['||ch=='}' && top=='{')
                 stack.pop();
                 else
