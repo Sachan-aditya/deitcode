@@ -1,10 +1,18 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        int x=0;
-        for(int i=0;i<nums.length;i++)
+        Set<Integer> set=new HashSet<>();
+        for(int i:nums)
         {
-            x^=nums[i];
+            if(set.contains(i))
+            set.remove(i);
+            else
+            set.add(i);
+
         }
-        return x;
+        for(int i:set)
+        {
+            return i;
+        }
+        return -1;
     }
 }
