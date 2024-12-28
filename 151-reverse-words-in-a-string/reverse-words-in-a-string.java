@@ -1,13 +1,27 @@
 class Solution {
     public String reverseWords(String s) {
-        String []p=s.trim().split("\\s+");
-        StringBuilder sb=new StringBuilder();
-        for(int i=p.length-1;i>=0;i--)
+        int left=0;
+        String []word=s.split(" ");
+        int right=word.length-1;
+        while(left<right)
         {
-            sb.append(p[i]);
-            if(i>0)
-            sb.append(" ");
+            String temp=word[left];
+            word[left]=word[right];
+            word[right]=temp;
+            left++;
+            right--;
+        }
+        StringBuilder sb=new StringBuilder();
+        for(String words:word)
+        {
+            if(!words.isEmpty())
+            {
+                if(sb.length()>0)
+                sb.append(" ");
+            }
+            sb.append(words);
         }
         return sb.toString();
+
     }
 }
