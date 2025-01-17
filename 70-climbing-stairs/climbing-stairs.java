@@ -1,14 +1,16 @@
-class Solution {   private Map<Integer,Integer> map=new HashMap<>();
+class Solution {
     public int climbStairs(int n) {
-
-        if(map.containsKey(n))
-        return map.get(n);
-        if(n<0)
-        return 0;
-        if(n==0)
-        return 1;
-     int res=climbStairs(n-1)+climbStairs(n-2);
-     map.put(n,res);
-     return res;
+   
+      if(n<=2)  
+      return n;
+         int prev=1;
+      int prev2=1;
+      for(int i=2;i<=n;i++)
+      {
+        int temp=prev+prev2;
+        prev2=prev;
+        prev=temp;
+      }
+      return prev;
     }
 }
